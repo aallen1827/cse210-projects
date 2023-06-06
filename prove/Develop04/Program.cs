@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop04 World!");
+        ListingActivity one = new ListingActivity();
+        one.RunListingActivity();
+        one.Spinner(5);
     }
 }
