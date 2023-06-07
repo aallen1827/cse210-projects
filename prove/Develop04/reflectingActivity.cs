@@ -2,6 +2,7 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts;
     private List<string> _questions;
+
     public ReflectingActivity() :base()
     {
         _startMessage = "Welcome to the Reflecting Activity.\nThis activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.\nHow long, in seconds, would you like for your session? ";
@@ -28,6 +29,7 @@ public class ReflectingActivity : Activity
         Pause();
         Console.Clear();
         _endTime = Timer(_time);
+
         while (_currentTime < _endTime)
         {
             Random rand = new Random();
@@ -37,6 +39,7 @@ public class ReflectingActivity : Activity
             Console.WriteLine();
             _currentTime = DateTime.Now;
         }
+        
         Console.WriteLine($"You have completed {_time} seconds of the Reflecting Activity.");
         DisplayEndMessage();
     }

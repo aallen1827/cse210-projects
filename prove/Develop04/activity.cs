@@ -12,6 +12,7 @@ public class Activity
     {
         _endMessage = "Well done!";
     }
+
     public void Pause()
     {
         Console.Write("5");
@@ -30,9 +31,11 @@ public class Activity
         Thread.Sleep(1000);
         Console.Write("\b \b");
     }
+
     public void Spinner(int time)
     {
         DateTime endTime = Timer(time);
+        
         while (_currentTime < endTime)
         {
             Console.Write("-");

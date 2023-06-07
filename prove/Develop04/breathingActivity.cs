@@ -11,12 +11,14 @@ public class BreathingActivity : Activity
         DisplayStart();
         Console.WriteLine("\n");
         _endTime = Timer(_time);
+
         while (_currentTime < _endTime)
         {
             BreatheIn();
             BreatheOut();
             _currentTime = DateTime.Now;
         }
+        
         DisplayEndMessage();
     }
 
