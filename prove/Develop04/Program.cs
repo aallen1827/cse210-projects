@@ -1,4 +1,5 @@
 using System;
+//I exceeded the requirements by using colored console text. Each activity is a different color. I thought that it would be a fun addition to the program.
 
 class Program
 {
@@ -10,7 +11,7 @@ class Program
         ReflectingActivity reflecting = new ReflectingActivity();
 
         int choice = menu.Display();
-        
+
         while (choice != 4)
         {
             if (choice == 1)
