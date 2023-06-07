@@ -18,18 +18,18 @@ public class BreathingActivity : Activity
             BreatheOut();
             _currentTime = DateTime.Now;
         }
-        
+
         DisplayEndMessage();
     }
 
-    public void BreatheIn()
+    private void BreatheIn()
     {
         Console.Write("Breathe in...");
         Pause();
         Console.WriteLine();
     }
 
-    public void BreatheOut()
+    private void BreatheOut()
     {
         Console.Write("Now breathe out...");
         Pause();

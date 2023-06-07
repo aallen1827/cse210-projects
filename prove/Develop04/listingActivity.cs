@@ -8,7 +8,7 @@ public class ListingActivity : Activity
         _prompts = new List<string> {"Who are people you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?"};
     }
 
-    public string GetPrompt()
+    private string GetPrompt()
     {
         Random rand = new Random();
         int number = rand.Next(0,4);
@@ -34,7 +34,7 @@ public class ListingActivity : Activity
             entries++;
             _currentTime = DateTime.Now;
         }
-        
+
         Console.WriteLine($"You listed {entries} items!");
         DisplayEndMessage();
     }

@@ -13,7 +13,7 @@ public class Activity
         _endMessage = "Well done!";
     }
 
-    public void Pause()
+    protected void Pause()
     {
         Console.Write("5");
         Thread.Sleep(1000);
@@ -32,10 +32,10 @@ public class Activity
         Console.Write("\b \b");
     }
 
-    public void Spinner(int time)
+    protected void Spinner(int time)
     {
         DateTime endTime = Timer(time);
-        
+
         while (_currentTime < endTime)
         {
             Console.Write("-");
@@ -55,7 +55,7 @@ public class Activity
         }
     }
 
-    public DateTime Timer(int time)
+    protected DateTime Timer(int time)
     {
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(time);
@@ -63,14 +63,14 @@ public class Activity
         return endTime;
     }
 
-    public void DisplayEndMessage()
+    protected void DisplayEndMessage()
     {
         Console.WriteLine(_endMessage);
         Spinner(3);
         Console.ResetColor();
     }
 
-    public void DisplayStart()
+    protected void DisplayStart()
     {
         Console.Clear();
         Console.Write(_startMessage);
