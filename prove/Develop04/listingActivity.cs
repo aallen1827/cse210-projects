@@ -16,14 +16,13 @@ public class ListingActivity : Activity
 
     public void RunListingActivity()
     {
+        Console.ForegroundColor = ConsoleColor.Blue;
         string prompt = GetPrompt();
-        Console.Write(_startMessage);
-        _time = int.Parse(Console.ReadLine());
-        Console.Clear();
-        Console.Write($"Get ready...\nList as many responses as you can to the following prompt:\n--- {prompt} ---\nYou may begin in: ");
+        DisplayStart();
+        Console.Write($"\b \b\nList as many responses as you can to the following prompt:\n--- {prompt} ---\nYou may begin in: ");
         Pause();
         Console.WriteLine();
-        Timer();
+        _endTime = Timer(_time);
         int entries = 0;
         while (_currentTime < _endTime)
         {
@@ -33,5 +32,6 @@ public class ListingActivity : Activity
             _currentTime = DateTime.Now;
         }
         Console.WriteLine($"You listed {entries} items!");
+        DisplayEndMessage();
     }
 }

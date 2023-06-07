@@ -10,8 +10,7 @@ public class Activity
 
     public Activity()
     {
-        _startMessage = "startMessage";
-        _endMessage = "endMessage";
+        _endMessage = "Well done!";
     }
     public void Pause()
     {
@@ -33,31 +32,48 @@ public class Activity
     }
     public void Spinner(int time)
     {
-        _time = time;
-        Timer();
-        while (_currentTime < _endTime)
+        DateTime endTime = Timer(time);
+        while (_currentTime < endTime)
         {
             Console.Write("-");
-            Thread.Sleep(1000);
+            Thread.Sleep(400);
             Console.Write("\b \b");
             Console.Write("\\");
-            Thread.Sleep(1000);
+            Thread.Sleep(400);
             Console.Write("\b \b");
             _currentTime = DateTime.Now;
             Console.Write("|");
-            Thread.Sleep(1000);
+            Thread.Sleep(400);
             Console.Write("\b \b");
             Console.Write("/");
-            Thread.Sleep(1000);
+            Thread.Sleep(400);
             Console.Write("\b \b");
             _currentTime = DateTime.Now;
         }
     }
 
-    public void Timer()
+    public DateTime Timer(int time)
     {
         DateTime startTime = DateTime.Now;
-        _endTime = startTime.AddSeconds(_time);
+        DateTime endTime = startTime.AddSeconds(time);
         _currentTime = DateTime.Now;
+        return endTime;
+    }
+
+    public void DisplayEndMessage()
+    {
+        Console.WriteLine(_endMessage);
+        Spinner(3);
+        Console.ResetColor();
+    }
+
+    public void DisplayStart()
+    {
+        Console.Clear();
+        Console.Write(_startMessage);
+        _time = int.Parse(Console.ReadLine());
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        Spinner(3);
     }
 }
