@@ -127,6 +127,21 @@ public class Menu
         }
     }
 
+    public void RecordEvent()
+    {
+        Console.WriteLine("The goals are:");
+        int goalNumber = 1;
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine($"{goalNumber}. {goal}");
+        }
+        Console.Write("Which goal did you accomplish? ");
+        int goalCompletedNumber = int.Parse(Console.ReadLine());
+        Goal completedGoal = _goals[(goalCompletedNumber - 1)];
+        int points = completedGoal.RecordEvent();
+        _totalPoints += points;
+    }
+
     public Menu()
     {
         _totalPoints = 0;

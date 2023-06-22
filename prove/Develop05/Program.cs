@@ -27,7 +27,7 @@ class Program
             }
             else if (choice == 5)
             {
-
+                menu.RecordEvent();
             }
             choice = menu.DisplayMenu();
         }

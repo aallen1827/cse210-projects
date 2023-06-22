@@ -4,7 +4,8 @@ public class SimpleGoal : Goal
 
     public override int RecordEvent()
     {
-        return 0;
+        _isCompleted = true;
+        return _points;
     }
 
     public override void DisplayGoal()

@@ -7,7 +7,16 @@ public class ChecklistGoal : Goal
 
     public override int RecordEvent()
     {
-        return 0;
+        int pointTotal = _points;
+        _timesCompleted ++;
+        IsComplete();
+
+        if (_isCompleted)
+        {
+            pointTotal += _bonusPoints;
+        }
+        
+        return pointTotal;
     }
 
     public override void DisplayGoal()
