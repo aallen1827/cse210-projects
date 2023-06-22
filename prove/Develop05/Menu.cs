@@ -20,14 +20,14 @@ public class Menu
     public int DisplayMenu()
     {
         Console.WriteLine($"You have {_totalPoints} points.");
-        Console.WriteLine($"\nMenu Options:\n 1. Create New Goal\n 2. List Goals\n 3. Save Goals\n 4. Load Goals\n 5. Record Event\n 6. Quit\nSelect a choice from the menu: ");
+        Console.Write($"\nMenu Options:\n 1. Create New Goal\n 2. List Goals\n 3. Save Goals\n 4. Load Goals\n 5. Record Event\n 6. Quit\nSelect a choice from the menu: ");
         int choice = int.Parse(Console.ReadLine());
         return choice;
     }
 
     public void Save()
     {
-        Console.WriteLine("What is the filename? ");
+        Console.Write("What is the filename? ");
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
@@ -41,7 +41,7 @@ public class Menu
 
     public void Load()
     {
-        Console.WriteLine("What is the name of the file? ");
+        Console.Write("What is the name of the file? ");
         string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
 
@@ -59,6 +59,7 @@ public class Menu
                 bool isComplete = bool.Parse(parts[4]);
 
                 SimpleGoal goal = new SimpleGoal(name, description, points, isComplete);
+                _goals.Add(goal);
             }
             else if (goalType == "ChecklistGoal")
             {
@@ -71,6 +72,7 @@ public class Menu
                 int timesCompleted = int.Parse(parts[7]);
 
                 ChecklistGoal goal = new ChecklistGoal(name, description, points, timesToCompletion, bonusPoints, timesCompleted, isComplete);
+                _goals.Add(goal);
             }
             else if (goalType == "EternalGoal")
             {
@@ -79,11 +81,49 @@ public class Menu
                 int points = int.Parse(parts[3]);
 
                 EternalGoal goal = new EternalGoal(name, description, points);
+                _goals.Add(goal);
             }
             else
             {
                 _totalPoints = int.Parse(lines[0]);
             }
+        }
+    }
+
+    public void CreateGoal()
+    {
+        Console.Write("The types of goals are:\n 1. Simple Goal\n 2. Eternal Goal\n 3. Checklist Goal\nWhat type of goal would you like to create? ");
+        int choice = int.Parse(Console.ReadLine());
+
+        Console.Write("What is the name of the goal? ");
+        string name = Console.ReadLine();
+
+        Console.Write("What is a short description of the goal? ");
+        string description = Console.ReadLine();
+
+        Console.Write("What is the amount of points associated with the goal? ");
+        int points = int.Parse(Console.ReadLine());
+
+        if (choice == 1)
+        {
+            SimpleGoal goal = new SimpleGoal(name, description, points);
+            _goals.Add(goal);
+        }
+        else if (choice == 2)
+        {
+            EternalGoal goal = new EternalGoal(name, description, points);
+            _goals.Add(goal);
+        }
+        else if (choice == 3)
+        {
+            Console.Write("How many times does the goal need to be completed for a bonus? ");
+            int timesToCompletion = int.Parse(Console.ReadLine());
+
+            Console.Write("What is the bonus for completing it that many times? ");
+            int bonusPoints = int.Parse(Console.ReadLine());
+
+            ChecklistGoal goal = new ChecklistGoal(name, description, points, timesToCompletion, bonusPoints);
+            _goals.Add(goal);
         }
     }
 
