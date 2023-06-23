@@ -8,6 +8,7 @@ public class Menu
     {
         Console.WriteLine("The goals are:");
         int goalNumber = 1;
+
         foreach (Goal goal in _goals)
         {
             Console.Write($"{goalNumber}. ");
@@ -29,9 +30,11 @@ public class Menu
     {
         Console.Write("What is the filename? ");
         string filename = Console.ReadLine();
+
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
             outputFile.WriteLine(_totalPoints);
+
             foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine(goal.GetAttributes());
@@ -83,7 +86,6 @@ public class Menu
                 EternalGoal goal = new EternalGoal(name, description, points);
                 _goals.Add(goal);
             }
-
             else if (goalType == "NegativeGoal")
             {
                 string name = parts[1];
@@ -93,7 +95,6 @@ public class Menu
                 NegativeGoal goal = new NegativeGoal(name, description, points);
                 _goals.Add(goal);
             }
-            
             else
             {
                 _totalPoints = int.Parse(lines[0]);
@@ -157,11 +158,13 @@ public class Menu
     {
         Console.WriteLine("The goals are:");
         int goalNumber = 1;
+
         foreach (Goal goal in _goals)
         {
             Console.WriteLine($"{goalNumber}. {goal._name}");
             goalNumber++;
         }
+        
         Console.Write("Which goal did you accomplish? ");
         int goalCompletedNumber = int.Parse(Console.ReadLine());
         Goal completedGoal = _goals[(goalCompletedNumber - 1)];

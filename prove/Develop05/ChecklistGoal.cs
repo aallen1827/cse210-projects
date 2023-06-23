@@ -22,6 +22,7 @@ public class ChecklistGoal : Goal
     public override void DisplayGoal()
     {
         IsComplete();
+        
         if (_isCompleted)
         {
             Console.Write($"[x] {_name} ({_description}) -- Currently completed: {_timesCompleted}/{_timesToComplete}");

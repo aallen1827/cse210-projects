@@ -29,6 +29,7 @@ class Program
             {
                 menu.RecordEvent();
             }
+            
             choice = menu.DisplayMenu();
         }
     }
