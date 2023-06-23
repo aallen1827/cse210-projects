@@ -83,6 +83,17 @@ public class Menu
                 EternalGoal goal = new EternalGoal(name, description, points);
                 _goals.Add(goal);
             }
+
+            else if (goalType == "NegativeGoal")
+            {
+                string name = parts[1];
+                string description = parts[2];
+                int points = int.Parse(parts[3]);
+
+                NegativeGoal goal = new NegativeGoal(name, description, points);
+                _goals.Add(goal);
+            }
+            
             else
             {
                 _totalPoints = int.Parse(lines[0]);
@@ -92,7 +103,7 @@ public class Menu
 
     public void CreateGoal()
     {
-        Console.Write("The types of goals are:\n 1. Simple Goal\n 2. Eternal Goal\n 3. Checklist Goal\nWhat type of goal would you like to create? ");
+        Console.Write("The types of goals are:\n 1. Simple Goal\n 2. Eternal Goal\n 3. Checklist Goal\n 4. Negative Goal\nWhat type of goal would you like to create? ");
         int choice = int.Parse(Console.ReadLine());
 
         Console.Write("What is the name of the goal? ");
@@ -101,21 +112,27 @@ public class Menu
         Console.Write("What is a short description of the goal? ");
         string description = Console.ReadLine();
 
-        Console.Write("What is the amount of points associated with the goal? ");
-        int points = int.Parse(Console.ReadLine());
-
         if (choice == 1)
         {
+            Console.Write("What is the amount of points associated with the goal? ");
+            int points = int.Parse(Console.ReadLine());
+            
             SimpleGoal goal = new SimpleGoal(name, description, points);
             _goals.Add(goal);
         }
         else if (choice == 2)
         {
+            Console.Write("What is the amount of points associated with the goal? ");
+            int points = int.Parse(Console.ReadLine());
+            
             EternalGoal goal = new EternalGoal(name, description, points);
             _goals.Add(goal);
         }
         else if (choice == 3)
         {
+            Console.Write("What is the amount of points associated with the goal? ");
+            int points = int.Parse(Console.ReadLine());
+            
             Console.Write("How many times does the goal need to be completed for a bonus? ");
             int timesToCompletion = int.Parse(Console.ReadLine());
 
@@ -123,6 +140,15 @@ public class Menu
             int bonusPoints = int.Parse(Console.ReadLine());
 
             ChecklistGoal goal = new ChecklistGoal(name, description, points, timesToCompletion, bonusPoints);
+            _goals.Add(goal);
+        }
+        else
+        {
+            Console.Write("How many points should you lose for doing this? ");
+            int points = int.Parse(Console.ReadLine());
+            
+            int negativePoints = -points;
+            NegativeGoal goal = new NegativeGoal(name, description, negativePoints);
             _goals.Add(goal);
         }
     }
@@ -133,7 +159,8 @@ public class Menu
         int goalNumber = 1;
         foreach (Goal goal in _goals)
         {
-            Console.WriteLine($"{goalNumber}. {goal}");
+            Console.WriteLine($"{goalNumber}. {goal._name}");
+            goalNumber++;
         }
         Console.Write("Which goal did you accomplish? ");
         int goalCompletedNumber = int.Parse(Console.ReadLine());

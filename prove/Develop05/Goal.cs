@@ -1,7 +1,7 @@
 public abstract class Goal
 {
     protected int _points;
-    protected string _name;
+    public string _name;
     protected string _description;
 
     public abstract int RecordEvent();
