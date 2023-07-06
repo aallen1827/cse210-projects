@@ -5,7 +5,7 @@ public class NonNGC : DeepSkyObject
 
     public override void Display()
     {
-
+        Console.WriteLine($"{_catalogue} {_number}: magnitude {_magnitude} {_objectType} ({_dateLastSeen})");
     }
 
     public override void RecordViewing()

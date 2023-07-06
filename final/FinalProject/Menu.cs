@@ -25,7 +25,10 @@ public class Menu
     }
     public int Selection()
     {
-        Console.Clear();
+        if (_listNumber != 4)
+        {
+            Console.Clear();
+        }
         Display();
         bool selected = false;
         hovering = 0;
@@ -59,53 +62,15 @@ public class Menu
     }
     public void Search(string filename)
     {
-        Console.Clear();
-        Console.WriteLine("Search: ");
-        int searchNumber = int.Parse(Console.ReadLine());
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        Console.Clear();
-        foreach (string line in lines)
-        {
-            if (searchNumber == int.Parse(line))
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-            }
-            else
-            {
-                Console.ResetColor();
-            }
-            Console.WriteLine(line);
-        }
+        
     }
 
-    public void DisplayObjects(string catalogue)
+    public void DisplayObjects(IEnumerable<IDisplay> list)
     {
-        if (catalogue == "NGC")
+        Console.Clear();
+        foreach (var x in list)
         {
-            //foreach (NGC ngc in )
-            {
-               // ngc.Display();
-            }
-        }
-        else if (catalogue == "IC")
-        {
-
-        }
-        else if (catalogue == "NonNGC")
-        {
-
-        }
-        else if (catalogue == "Messier")
-        {
-
-        }
-        else if (catalogue == "Caldwell")
-        {
-
-        }
-        else
-        {
-
+            x.Display();
         }
     }
 

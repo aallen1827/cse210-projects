@@ -4,7 +4,7 @@ public class Messier : NGC
 
     public override void Display()
     {
-
+        Console.WriteLine($"{_messierNumber}: magnitude {_magnitude} {_objectType} ({_dateLastSeen})");
     }
 
     public override void RecordViewing()

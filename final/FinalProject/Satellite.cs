@@ -1,4 +1,4 @@
-public class Satellite
+public class Satellite : IDisplay
 {
     private int _number;
     private string _dateLaunched;

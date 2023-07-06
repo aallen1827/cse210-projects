@@ -4,7 +4,7 @@ public class Caldwell : NGC
 
     public override void Display()
     {
-
+        Console.WriteLine($"{_caldwellNumber}: magnitude {_magnitude} {_objectType} ({_dateLastSeen})");
     }
 
     public override void RecordViewing()

@@ -1,4 +1,4 @@
-public abstract class DeepSkyObject
+public abstract class DeepSkyObject : IDisplay
 {
     protected string _objectType;
     protected string _dateLastSeen;
