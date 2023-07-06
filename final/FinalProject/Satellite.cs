@@ -6,7 +6,14 @@ public class Satellite : IDisplay
 
     public void Display()
     {
-
+        if (_dateLaunched != "")
+        {
+            Console.WriteLine($"{_number}: {_name} (Launched {_dateLaunched})");
+        }
+        else
+        {
+            Console.WriteLine($"{_number}: {_name}");
+        }
     }
 
     public void RecordViewing()
@@ -29,5 +36,12 @@ public class Satellite : IDisplay
         _number = number;
         _dateLaunched = dateLaunched;
         _name = name;
+    }
+
+    public Satellite(int number, string name)
+    {
+        _number = number;
+        _name = name;
+        _dateLaunched = "";
     }
 }

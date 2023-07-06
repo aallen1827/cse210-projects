@@ -4,7 +4,7 @@ public class IC : DeepSkyObject
 
     public override void Display()
     {
-        Console.WriteLine($"{_ICNumber}: magnitude {_magnitude} {_objectType} ({_dateLastSeen})");
+        Console.WriteLine($"{_ICNumber}: magnitude {_magnitude} {_objectType} (Last Seen: {_dateLastSeen})");
     }
 
     public override void RecordViewing()

@@ -123,3 +123,6 @@ Caldwell,open cluster,4.8,unknown,2244,50
 Caldwell,planetary nebula,8.6,unknown,3242,59
 Caldwell,open cluster,3.8,unknown,2362,64
 Caldwell,globular cluster,3.9,unknown,5139,80
+NonNGC,open cluster,3.6,unknown,Collinder,399
+Satellite,25544,11/20/98,International Space Station
+Satellite,20580,4/34/90,Hubble Space Telescope
