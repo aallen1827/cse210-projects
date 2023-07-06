@@ -1,0 +1,29 @@
+public class IC : DeepSkyObject
+{
+    private int _ICNumber;
+
+    public override void Display()
+    {
+
+    }
+
+    public override void RecordViewing()
+    {
+        
+    }
+
+    public override void Search()
+    {
+    
+    }
+
+    public override void Save()
+    {
+        
+    }
+
+    public IC(string objectType, double magnitude, string dateLastSeen, int ICNumber) : base(objectType, magnitude, dateLastSeen)
+    {
+        _ICNumber = ICNumber;
+    }
+}
