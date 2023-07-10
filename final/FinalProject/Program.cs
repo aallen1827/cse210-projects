@@ -82,7 +82,8 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("messier.txt");
+                    messierObjects[0].Search(messierObjects);
+
                     back.Selection();
                     ProcessList(messierMenu);
                 }
@@ -103,7 +104,8 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("ngc.txt");
+                    NGCObjects[0].Search(NGCObjects);
+
                     back.Selection();
                     ProcessList(NGCMenu);
                 }
@@ -124,7 +126,7 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("ngc.txt");
+                    caldwellObjects[0].Search(caldwellObjects);
                     back.Selection();
                     ProcessList(caldwellMenu);
                 }
@@ -145,7 +147,7 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("ngc.txt");
+                    ICObjects[0].Search(ICObjects);
                     back.Selection();
                     ProcessList(ICMenu);
                 }
@@ -166,7 +168,8 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("ngc.txt");
+                    nonNGCObjects[0].Search(nonNGCObjects);
+
                     back.Selection();
                     ProcessList(nonNGCMenu);
                 }
@@ -187,7 +190,7 @@ class Program
                 }
                 else if (choice == 1)
                 {
-                    menu.Search("ngc.txt");
+                    satelliteObjects[0].Search(satelliteObjects);
                     back.Selection();
                     ProcessList(satelliteMenu);
                 }

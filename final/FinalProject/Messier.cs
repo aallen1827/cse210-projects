@@ -12,9 +12,31 @@ public class Messier : NGC
         
     }
 
-    public override void Search()
+    public void Search(List<Messier> list)
     {
-    
+        Console.WriteLine("Enter Messier number to search for: ");
+        int searchNumber = int.Parse(Console.ReadLine());
+        bool found = false;
+        while (!found)
+        {
+            foreach (Messier item in list) 
+            {
+                if (item._messierNumber == searchNumber)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Results for Messier {searchNumber}:");
+                    item.Display();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Clear();
+                Console.WriteLine($"Results for Messier {searchNumber}:");
+                Console.WriteLine("Messier object not found");
+                found = true;
+            }
+        }
     }
 
     public override void Save()

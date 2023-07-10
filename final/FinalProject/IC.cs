@@ -12,9 +12,31 @@ public class IC : DeepSkyObject
         
     }
 
-    public override void Search()
+    public void Search(List<IC> list)
     {
-    
+        Console.WriteLine("Enter IC number to search for: ");
+        int searchNumber = int.Parse(Console.ReadLine());
+        bool found = false;
+        while (!found)
+        {
+            foreach (IC item in list) 
+            {
+                if (item._ICNumber == searchNumber)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Results for IC {searchNumber}:");
+                    item.Display();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Clear();
+                Console.WriteLine($"Results for IC {searchNumber}:");
+                Console.WriteLine("IC object not found");
+                found = true;
+            }
+        }
     }
 
     public override void Save()

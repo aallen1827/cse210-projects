@@ -12,9 +12,31 @@ public class NGC : DeepSkyObject
         
     }
 
-    public override void Search()
+    public virtual void Search(List<NGC> list)
     {
-    
+        Console.WriteLine("Enter NGC number to search for: ");
+        int searchNumber = int.Parse(Console.ReadLine());
+        bool found = false;
+        while (!found)
+        {
+            foreach (NGC item in list) 
+            {
+                if (item._NGCNumber == searchNumber)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Results for NGC {searchNumber}:");
+                    item.Display();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Clear();
+                Console.WriteLine($"Results for NGC {searchNumber}:");
+                Console.WriteLine("NGC object not found");
+                found = true;
+            }
+        }
     }
 
     public override void Save()

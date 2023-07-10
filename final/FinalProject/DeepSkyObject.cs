@@ -8,8 +8,6 @@ public abstract class DeepSkyObject : IDisplay
 
     public abstract void RecordViewing();
 
-    public abstract void Search();
-
     public abstract void Save();
 
     public DeepSkyObject(string objectType, double magnitude, string dateLastSeen)

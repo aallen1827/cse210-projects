@@ -60,10 +60,6 @@ public class Menu
         }
         return hovering;
     }
-    public void Search(string filename)
-    {
-        
-    }
 
     public void DisplayObjects(IEnumerable<IDisplay> list)
     {

@@ -21,9 +21,31 @@ public class Satellite : IDisplay
 
     }
 
-    public void Search()
+    public void Search(List<Satellite> list)
     {
-
+        Console.WriteLine("Enter Satellite number to search for: ");
+        int searchNumber = int.Parse(Console.ReadLine());
+        bool found = false;
+        while (!found)
+        {
+            foreach (Satellite item in list) 
+            {
+                if (item._number == searchNumber)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"Results for satellite {searchNumber}:");
+                    item.Display();
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                Console.Clear();
+                Console.WriteLine($"Results for satellite {searchNumber}:");
+                Console.WriteLine("Satellite not found");
+                found = true;
+            }
+        }
     }
 
     public void Save()
