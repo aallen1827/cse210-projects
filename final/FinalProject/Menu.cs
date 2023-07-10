@@ -29,9 +29,9 @@ public class Menu
         {
             Console.Clear();
         }
+        hovering = 0;
         Display();
         bool selected = false;
-        hovering = 0;
         while (!selected)
         {
             ConsoleKeyInfo keyPressed = Console.ReadKey(true);
