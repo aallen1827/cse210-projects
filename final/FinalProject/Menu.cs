@@ -64,6 +64,8 @@ public class Menu
     public void DisplayObjects(IEnumerable<IDisplay> list)
     {
         Console.Clear();
+        Console.WriteLine("\x1b[3J");
+        Console.Clear();
         foreach (var x in list)
         {
             x.Display();
