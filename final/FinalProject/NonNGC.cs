@@ -8,14 +8,78 @@ public class NonNGC : DeepSkyObject
         Console.WriteLine($"{_catalogue} {_number}: magnitude {_magnitude} {_objectType} (Last Seen: {_dateLastSeen})");
     }
 
-    public override void RecordViewing()
+    public virtual void RecordViewing(List<NonNGC> observedList)
     {
-        
+        Console.Write("Catalogue: ");
+        string catalogue = Console.ReadLine();
+        Console.WriteLine();
+        Console.Write("Number: ");
+        int number = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+
+        bool inList = false;
+
+        while (!inList)
+        {
+            foreach (NonNGC nonNGC in observedList)
+            {
+                if (nonNGC._catalogue == catalogue)
+                {
+                    if (nonNGC._number == number)
+                    {
+                        inList = true;
+
+                        Console.Write("Did you see it today (y/n): ");
+                        string seenToday = Console.ReadLine();
+                        Console.WriteLine();
+                        if (seenToday.ToLower() == "y")
+                        {
+                            DateTime today = DateTime.Today;
+                            nonNGC._dateLastSeen = today.ToShortDateString();
+                        }
+                        else
+                        {
+                            Console.Write("Date Seen (mm/dd/yyyy): ");
+                            string dateSeen = Console.ReadLine();
+                            Console.WriteLine();
+                            nonNGC._dateLastSeen = dateSeen;
+                        }
+                    }
+                }
+            }
+            break;
+        }
+        if (!inList)
+        {
+            Console.Write("Object Type: ");
+            string objectType = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Magnitude: ");
+            double magnitude = double.Parse(Console.ReadLine());
+            Console.Write("Did you see it today (y/n): ");
+            string seenToday = Console.ReadLine();
+            Console.WriteLine();
+            string dateSeen = "";
+            if (seenToday.ToLower() == "y")
+            {
+                DateTime today = DateTime.Today;
+                dateSeen = today.ToShortDateString();
+            }
+            else
+            {
+                Console.Write("Date Seen (mm/dd/yyyy): ");
+                dateSeen = Console.ReadLine();
+                Console.WriteLine();
+            }
+
+            NonNGC newNonNGC = new NonNGC(objectType, magnitude, dateSeen, catalogue, number);
+            observedList.Add(newNonNGC);
+        }
     }
 
     public void Search(List<NonNGC> list)
     {
-        Console.WriteLine("Enter catalogue to search in: ");
+        Console.Write("Enter catalogue to search in: ");
         string searchCatalogue = Console.ReadLine();
         bool found = false;
         while (!found)

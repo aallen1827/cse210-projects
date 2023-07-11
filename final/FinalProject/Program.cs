@@ -4,8 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        var homeList = new List<string> {"Messier", "NGC", "Caldwell", "IC", "Non NGC", "Satellite", "Quit"};
-        Menu homeMenu = new Menu(homeList, "Choose your catalogue:", 1);
+        var homeList = new List<string> {"Select a catalogue", "Record Viewing", "Save", "Quit"};
+        Menu homeMenu = new Menu(homeList, "Select an action:", 0);
+        
+        var catalogueList = new List<string> {"Messier", "NGC", "Caldwell", "IC", "Non NGC", "Satellite", "Back"};
+        Menu catalogueMenu = new Menu(catalogueList, "Choose your catalogue:", 1);
 
         var DSOList = new List<string> {"List Objects", "Search", "Back"};
 
@@ -38,7 +41,27 @@ class Program
         void ProcessList(Menu menu)
         {
             
-            if (menu._listNumber == 1)
+            if (menu._listNumber == 0)
+            {
+                int choice = menu.Selection();
+                if (choice == 0)
+                {
+                    ProcessList(catalogueMenu);
+                }
+                else if (choice == 1)
+                {
+                    RecordViewing();
+                }
+                else if (choice == 2)
+                {
+                    //save
+                }
+                else if (choice == 3)
+                {
+                    //ends program
+                }
+            }
+            else if (menu._listNumber == 1)
             {
                 int choice = menu.Selection();
                 if (choice == 0)
@@ -67,7 +90,7 @@ class Program
                 }
                 else
                 {
-                    //ends program
+                    ProcessList(homeMenu);
                 }
             }
             else if (menu._listNumber == 2)
@@ -89,7 +112,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
             else if (menu._listNumber == 3)
@@ -111,7 +134,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
             else if (menu._listNumber == 5)
@@ -132,7 +155,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
             else if (menu._listNumber == 6)
@@ -153,7 +176,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
             else if (menu._listNumber == 7)
@@ -175,7 +198,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
             else if (menu._listNumber == 8)
@@ -196,7 +219,7 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    ProcessList(homeMenu);
+                    ProcessList(catalogueMenu);
                 }
             }
         }
@@ -266,6 +289,40 @@ class Program
                     }
                 }
             }
+        }
+
+        void RecordViewing()
+        {
+            Console.WriteLine("To record a viewing, input the following information:");
+            Console.Write("Catalogue: ");
+            string catalogue = Console.ReadLine();
+            Console.WriteLine();
+            if (catalogue.ToLower() == "messier")
+            {
+                messierObjects[0].RecordViewing(messierObjects, NGCObjects);
+            }
+            else if (catalogue.ToLower() == "ngc")
+            {
+                NGCObjects[0].RecordViewing(NGCObjects);
+            }
+            else if (catalogue.ToLower() == "caldwell")
+            {
+                caldwellObjects[0].RecordViewing(caldwellObjects, NGCObjects);
+            }
+            else if (catalogue.ToLower() == "ic")
+            {
+                ICObjects[0].RecordViewing(ICObjects);
+            }
+            else if (catalogue.ToLower() == "satellite")
+            {
+                satelliteObjects[0].RecordViewing(satelliteObjects);
+            }
+            else
+            {
+                nonNGCObjects[0].RecordViewing(nonNGCObjects);
+            }
+            back.Selection();
+            ProcessList(homeMenu);
         }
     }
 }

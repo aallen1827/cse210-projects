@@ -16,14 +16,44 @@ public class Satellite : IDisplay
         }
     }
 
-    public void RecordViewing()
+    public void RecordViewing(List<Satellite> observedList)
     {
+        Console.Write("Satellite Number: ");
+        int satelliteNumber = int.Parse(Console.ReadLine());
+        Console.WriteLine();
 
+        bool inList = false;
+
+        while (!inList)
+        {
+            foreach (Satellite satellite in observedList)
+            {
+                if (satellite._number == satelliteNumber)
+                {
+                    inList = true;
+                    Console.Write("Already seen");
+                }
+            }
+            break;
+        }
+        if (!inList)
+        {
+            Console.Write("Date Launched: ");
+            string dateLaunched = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine();
+
+            Satellite newSatellite = new Satellite(satelliteNumber, dateLaunched, name);
+            observedList.Add(newSatellite);
+            Console.WriteLine("Satellite added");
+        }
     }
 
     public void Search(List<Satellite> list)
     {
-        Console.WriteLine("Enter Satellite number to search for: ");
+        Console.Write("Enter Satellite number to search for: ");
         int searchNumber = int.Parse(Console.ReadLine());
         bool found = false;
         while (!found)

@@ -75,11 +75,6 @@ public class Menu
 
     }
 
-    public void RecordViewing()
-    {
-
-    }
-
     public Menu(List<string> entries, string message, int listNumber)
     {
         _entries = entries;

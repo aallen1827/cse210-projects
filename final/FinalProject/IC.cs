@@ -7,14 +7,74 @@ public class IC : DeepSkyObject
         Console.WriteLine($"{_ICNumber}: magnitude {_magnitude} {_objectType} (Last Seen: {_dateLastSeen})");
     }
 
-    public override void RecordViewing()
+    public void RecordViewing(List<IC> observedList)
     {
-        
+        Console.Write("IC Number: ");
+        int icNumber = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+
+        bool inList = false;
+
+        while (!inList)
+        {
+            foreach (IC ic in observedList)
+            {
+                if (ic._ICNumber == icNumber)
+                {
+                    inList = true;
+
+                    Console.Write("Did you see it today (y/n): ");
+                    string seenToday = Console.ReadLine();
+                    Console.WriteLine();
+                    if (seenToday.ToLower() == "y")
+                    {
+                        DateTime today = DateTime.Today;
+                        ic._dateLastSeen = today.ToShortDateString();
+                    }
+                    else
+                    {
+                        Console.Write("Date Seen (mm/dd/yyyy): ");
+                        string dateSeen = Console.ReadLine();
+                        Console.WriteLine();
+                        ic._dateLastSeen = dateSeen;
+                    }
+                    Console.WriteLine("Viewing Recorded");
+                }
+            }
+            break;
+        }
+        if (!inList)
+        {
+            Console.Write("Object Type: ");
+            string objectType = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Magnitude: ");
+            double magnitude = double.Parse(Console.ReadLine());
+            Console.Write("Did you see it today (y/n): ");
+            string seenToday = Console.ReadLine();
+            Console.WriteLine();
+            string dateSeen = "";
+            if (seenToday.ToLower() == "y")
+            {
+                DateTime today = DateTime.Today;
+                dateSeen = today.ToShortDateString();
+            }
+            else
+            {
+                Console.Write("Date Seen (mm/dd/yyyy): ");
+                dateSeen = Console.ReadLine();
+                Console.WriteLine();
+            }
+
+            IC newIC = new IC(objectType, magnitude, dateSeen, icNumber);
+            observedList.Add(newIC);
+            Console.WriteLine("IC object created and viewing recorded");
+        }
     }
 
     public void Search(List<IC> list)
     {
-        Console.WriteLine("Enter IC number to search for: ");
+        Console.Write("Enter IC number to search for: ");
         int searchNumber = int.Parse(Console.ReadLine());
         bool found = false;
         while (!found)
