@@ -40,7 +40,9 @@ class Program
 
         void ProcessList(Menu menu)
         {
-            
+            Console.Clear();
+            Console.WriteLine("\x1b[3J");
+            Console.Clear();
             if (menu._listNumber == 0)
             {
                 int choice = menu.Selection();
@@ -276,7 +278,7 @@ class Program
                         }
                         else if (className == "Caldwell")
                         {
-                            int caldwellNumber = int.Parse(parts[4]);
+                            int caldwellNumber = int.Parse(parts[5]);
 
                             Caldwell caldwell = new Caldwell(objectType, magnitude, dateLastSeen, number, caldwellNumber);
                             caldwellObjects.Add(caldwell);
