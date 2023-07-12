@@ -117,9 +117,13 @@ public class Messier : NGC
         }
     }
 
-    public override void Save()
+    public void Save(StreamWriter filename, List<Messier> list)
     {
-        
+        foreach (Messier messier in list)
+        {
+            filename.WriteLine($"Messier,{messier._objectType},{messier._magnitude},{messier._dateLastSeen},{messier._NGCNumber},{messier._messierNumber}");
+        }
+
     }
 
     public Messier(string objectType, double magnitude, string dateLastSeen, int NGCNumber, int messierNumber) : base(objectType, magnitude, dateLastSeen, NGCNumber)

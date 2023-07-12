@@ -56,7 +56,14 @@ class Program
                 }
                 else if (choice == 2)
                 {
-                    //save
+                    using (StreamWriter outputFile = new StreamWriter("test.txt")) {
+                        messierObjects[0].Save(outputFile, messierObjects);
+                        NGCObjects[0].Save(outputFile, NGCObjects);
+                        caldwellObjects[0].Save(outputFile, caldwellObjects);
+                        ICObjects[0].Save(outputFile, ICObjects);
+                        nonNGCObjects[0].Save(outputFile, nonNGCObjects);
+                        satelliteObjects[0].Save(outputFile, satelliteObjects);
+                    }
                 }
                 else if (choice == 3)
                 {
@@ -228,7 +235,7 @@ class Program
 
         void Load()
         {
-            string filename = "dso.txt";
+            string filename = "test.txt";
             string[] lines = System.IO.File.ReadAllLines(filename);
 
             foreach (string line in lines)

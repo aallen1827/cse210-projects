@@ -78,9 +78,12 @@ public class Satellite : IDisplay
         }
     }
 
-    public void Save()
+    public void Save(StreamWriter filename, List<Satellite> list)
     {
-
+        foreach (Satellite satellite in list)
+        {
+            filename.WriteLine($"Satellite,{satellite._number},{satellite._dateLaunched},{satellite._name}");
+        }
     }
 
     public Satellite(int number, string dateLaunched, string name)
@@ -88,12 +91,5 @@ public class Satellite : IDisplay
         _number = number;
         _dateLaunched = dateLaunched;
         _name = name;
-    }
-
-    public Satellite(int number, string name)
-    {
-        _number = number;
-        _name = name;
-        _dateLaunched = "";
     }
 }

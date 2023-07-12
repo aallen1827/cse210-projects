@@ -72,11 +72,6 @@ public class Menu
         }
     }
 
-    public void Save()
-    {
-
-    }
-
     public Menu(List<string> entries, string message, int listNumber)
     {
         _entries = entries;

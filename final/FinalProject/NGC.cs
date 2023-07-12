@@ -98,9 +98,12 @@ public class NGC : DeepSkyObject
         }
     }
 
-    public override void Save()
+    public void Save(StreamWriter filename, List<NGC> list)
     {
-        
+        foreach (NGC ngc in list)
+        {
+            filename.WriteLine($"NGC,{ngc._objectType},{ngc._magnitude},{ngc._dateLastSeen},{ngc._NGCNumber}");
+        }
     }
 
     public int GetNGCNumber()

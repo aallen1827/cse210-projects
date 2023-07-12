@@ -88,7 +88,7 @@ public class NonNGC : DeepSkyObject
             {
                 if (item._catalogue.ToLower() == searchCatalogue.ToLower())
                 {
-                    Console.WriteLine($"Enter {searchCatalogue} number to search for: ");
+                    Console.Write($"Enter {searchCatalogue} number to search for: ");
                     int searchNumber = int.Parse(Console.ReadLine());
                     bool numberFound = false;
                     while (!found)
@@ -123,9 +123,12 @@ public class NonNGC : DeepSkyObject
         }
     }
 
-    public override void Save()
+    public void Save(StreamWriter filename, List<NonNGC> list)
     {
-        
+        foreach (NonNGC nonNGC in list)
+        {
+            filename.WriteLine($"NonNGC,{nonNGC._objectType},{nonNGC._magnitude},{nonNGC._dateLastSeen},{nonNGC._catalogue},{nonNGC._number}");
+        }
     }
 
     public NonNGC(string objectType, double magnitude, string dateLastSeen, string catalogue, int number) : base(objectType, magnitude, dateLastSeen)

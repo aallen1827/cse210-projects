@@ -99,9 +99,13 @@ public class IC : DeepSkyObject
         }
     }
 
-    public override void Save()
+    public void Save(StreamWriter filename, List<IC> list)
     {
-        
+        foreach (IC ic in list)
+        {
+            filename.WriteLine($"IC,{ic._objectType},{ic._magnitude},{ic._dateLastSeen},{ic._ICNumber}");
+        }
+
     }
 
     public IC(string objectType, double magnitude, string dateLastSeen, int ICNumber) : base(objectType, magnitude, dateLastSeen)

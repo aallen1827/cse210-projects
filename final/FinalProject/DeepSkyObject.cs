@@ -6,8 +6,6 @@ public abstract class DeepSkyObject : IDisplay
 
     public abstract void Display();
 
-    public abstract void Save();
-
     public DeepSkyObject(string objectType, double magnitude, string dateLastSeen)
     {
         _objectType = objectType;

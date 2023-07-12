@@ -117,9 +117,12 @@ public class Caldwell : NGC
         }
     }
 
-    public override void Save()
+    public void Save(StreamWriter filename, List<Caldwell> list)
     {
-        
+        foreach (Caldwell caldwell in list)
+        {
+            filename.WriteLine($"Caldwell,{caldwell._objectType},{caldwell._magnitude},{caldwell._dateLastSeen},{caldwell._NGCNumber},{caldwell._caldwellNumber}");
+        }
     }
 
     public Caldwell(string objectType, double magnitude, string dateLastSeen, int NGCNumber, int caldwellNumber) : base(objectType, magnitude, dateLastSeen, NGCNumber)
